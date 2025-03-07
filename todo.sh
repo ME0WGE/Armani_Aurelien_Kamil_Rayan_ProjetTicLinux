@@ -10,9 +10,11 @@ add_task(){
 }
 
 del_task(){
+  #création de list
   liste_suppresion=()
   nouvel_list=()
   u=0
+  #recupere le fichier texte dans une variable
   mapfile -t liste < liste_tache.txt
   for element in "${liste[@]}"
   do
@@ -21,7 +23,9 @@ del_task(){
   done
   read -p "supprimer quel element (un nombre ) :
   > " nbs
+  #demande quel variable suprimer
   u=0
+  #pour chaque element de la liste 
   for element in "${liste[@]}"
   do
     if [[ $u -ne $nbs ]]
@@ -33,15 +37,6 @@ del_task(){
   printf "%s\n" "${nouvel_list[@]}" > liste_tache.txt
 }
 
-print_list(){
-  i=1
-  mapfile -t liste < liste_tache.txt
-  for element in "${liste[@]}"
-  do
-    echo "$i. $element"
-    ((i++))
-  done
-}
 
 while true
 do
@@ -62,7 +57,7 @@ do
   elif [ $cmd == "3" ]
   then
     clear
-    print_list
+    cat liste_tache.txt
   elif [ $cmd == "4" ]
   then
     break

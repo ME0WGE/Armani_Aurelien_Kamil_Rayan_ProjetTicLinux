@@ -7,7 +7,6 @@ add_task(){
      read tache
      echo $tache >> $liste_tache
 }
-    
 
 while true
 do

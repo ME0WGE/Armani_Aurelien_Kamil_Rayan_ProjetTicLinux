@@ -1,4 +1,7 @@
 #!/bin/bash
+
+liste_tache="liste_tache.txt"
+
 while true
 do
     read -p "Entrez une commande: 

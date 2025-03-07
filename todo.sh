@@ -2,6 +2,13 @@
 
 liste_tache="liste_tache.txt"
 
+add_task(){
+    echo "Veuillez entrer une tâche:"
+     read tache
+     echo $tache >> $liste_tache
+}
+    
+
 while true
 do
     read -p "Entrez une commande: 
@@ -13,7 +20,7 @@ do
     if [ $cmd == "1" ]
     then
         clear
-        echo "1"
+        add_task
     elif [ $cmd == "2" ]
     then
         clear
@@ -21,7 +28,7 @@ do
     elif [ $cmd == "3" ]
     then
     clear
-        echo "3"
+        cat $liste_tache
     elif [ $cmd == "4" ]
     then
         break

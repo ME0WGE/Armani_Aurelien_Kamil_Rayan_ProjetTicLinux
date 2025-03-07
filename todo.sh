@@ -30,7 +30,17 @@ del_task(){
     fi
     ((u++))
   done
-  echo "${nouvel_list[@]}" > liste_tache.txt
+  printf "%s\n" "${nouvel_list[@]}" > liste_tache.txt
+}
+
+print_list(){
+  i=1
+  mapfile -t liste < liste_tache.txt
+  for element in "${liste[@]}"
+  do
+    echo "$i. $element"
+    ((i++))
+  done
 }
 
 while true
@@ -52,7 +62,7 @@ do
   elif [ $cmd == "3" ]
   then
     clear
-    cat liste_tache.txt
+    print_list
   elif [ $cmd == "4" ]
   then
     break

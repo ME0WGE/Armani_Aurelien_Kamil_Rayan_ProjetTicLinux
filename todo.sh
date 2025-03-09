@@ -64,7 +64,8 @@ do
 1. Ajoutez une tâche
 2. Supprimer une tâche
 3. Afficher toutes les tâches
-4. Quitter
+4. Modfifier une tâche
+5. Quitter
 > " cmd
     if [ $cmd == "1" ]
     then
@@ -79,6 +80,10 @@ do
     clear
         cat $liste_tache
     elif [ $cmd == "4" ]
+    then
+        clear
+        add_Modif
+    elif [ $cmd == "5" ]
     then
         break
         clear

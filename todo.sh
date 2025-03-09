@@ -19,7 +19,7 @@ message_bienvenue() {
 }
 # Ajouter une tâche
 ajouter_tache() {
-    echo "|=== Ajouter une nouvelle tâche ===|"
+    echo "|=== Ajouter une Nouvelle Tâche ===|"
     echo "Entrez la description de la tâche > "
     read description
 
@@ -34,7 +34,7 @@ ajouter_tache() {
 }
 # Supprimer une tâche
 supprimer_tache() {
-    echo "|=== Supprimer une tâche ===|"
+    echo "|=== Supprimer une Tâche ===|"
     # Vérifier si le tasks.txt est vide
     if [ ! -s "$FICHIER_TACHES" ]
     then
@@ -43,7 +43,7 @@ supprimer_tache() {
     fi
 
     # Afficher les numéros devant les tâches
-    echo '/// Liste des tâches \\\'
+    echo '/// Liste des Tâches \\\'
     nl -w1 -s". " "$FICHIER_TACHES"
 
     echo "Entrez le numéro de la tâche à supprimer > "
@@ -72,7 +72,7 @@ supprimer_tache() {
 }
 # Afficher les tâches
 afficher_tache() {
-    echo "|=== Afficher les tâches ===|"
+    echo "|=== Afficher les Tâches ===|"
 
     # Vérifier si le tasks.txt est vide
     if [ ! -s "$FICHIER_TACHES" ]
@@ -85,7 +85,54 @@ afficher_tache() {
 # BONUS
 # Modifier une tâche existante
 modifier_tache() {
-    
+    echo "|=== Modifier une Tâche ===|"
+
+    # Vérifier si le tasks.txt est vide
+    if [ ! -s "$FICHIER_TACHES" ]
+    then
+        echo "La liste des tâches est vide. Aucune tâche à modifier"
+    else
+    # Afficher les numéros devant les tâches
+        echo '\\\ Liste des Tâches ///'
+        nl -w1 -s". " "$FICHIER_TACHES"
+
+        echo "Entrez le numéro de la tâche à modifier > "
+        read numero_tache
+
+    # Vérifier que l'input de l'utilisateur est un nombre
+        if ! [[ "$numero_tache" =~ ^[0-9]+$ ]]
+        then
+            echo "Nop! Veuillez entrer un numéro :angry-stare:"
+            return
+        fi
+
+    # Compter le nombre de tâches dans tasks.txt
+        nombre_taches=$(wc -l < "$FICHIER_TACHES")
+
+    # Vérifier si le numéro de la tâche existe
+        if [ "$numero_tache" -lt 1 ] || [ "$numero_tache" -gt "$nombre_taches" ]
+        then
+            echo "Nop! Le numéro de la tâche n'existe pas."
+            return
+        fi
+
+    # Récupérer la tâche actuelle
+        tache_actuelle=$(sed -n "${numero_tache}p" "$FICHIER_TACHES")
+        echo "Tâche actuelle: $tache_actuelle"
+
+        echo "Entrez la nouvelle description de la tâche > "
+        read nouvelle_description
+
+        if [ -z "$nouvelle_description" ]
+        then
+            echo "Nop! La description ne peut pas être vide :angry-stare:"
+            return
+        fi
+
+    # Modifier la tâche dans le tasks.txt
+        sed -i "${numero_tache}s/.*/$nouvelle_description/" "$FICHIER_TACHES"
+        echo "Tâche $numero_tache a été modifiée avec succès!"
+    fi
 }
 
 
@@ -97,10 +144,11 @@ do
     echo "==========================================="
     echo "| 1. Ajouter une tâche                    |"
     echo "| 2. Supprimer une tâche                  |"
-    echo "| 3. Afficher toutes les tâches           |"
-    echo "| 4. Quitter                              |"
+    echo "| 3. Modifier une tâche                   |"
+    echo "| 4. Afficher toutes les tâches           |"
+    echo "| 5. Quitter                              |"
     echo "==========================================="
-    read -p "Choisissez une option (1-4)> " choix
+    read -p "Choisissez une option (1-5)> " choix
     
     case $choix in
         1)
@@ -115,10 +163,15 @@ do
             ;;
         3)
             clear
-            afficher_tache
+            modifier_tache
             read -p "Appuyez sur ENTER pour continuer..."
             ;;
         4)
+            clear
+            afficher_tache
+            read -p "Appuyez sur ENTER pour continuer..."
+            ;;
+        5)
             clear
             echo "Bye :>"
             exit 0

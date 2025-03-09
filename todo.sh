@@ -20,7 +20,7 @@ message_bienvenue() {
 # Ajouter une tâche
 ajouter_tache() {
     echo "|=== Ajouter une nouvelle tâche ===|"
-    echo "Entrez le description de la tâche > "
+    echo "Entrez la description de la tâche > "
     read description
 
     if [ -z "$description" ]
@@ -35,7 +35,7 @@ ajouter_tache() {
 # Supprimer une tâche
 supprimer_tache() {
     echo "|=== Supprimer une tâche ===|"
-    # Vérifier si la tasks.txt est vide
+    # Vérifier si le tasks.txt est vide
     if [ ! -s "$FICHIER_TACHES" ]
     then
         echo "La liste des tâches est vide. Aucune tâche à supprimer"
@@ -78,10 +78,9 @@ afficher_tache() {
     if [ ! -s "$FICHIER_TACHES" ]
     then
         echo "Aucune tâche."
+    else
+        nl -w1 -s". " "$FICHIER_TACHES"
     fi
-
-    # Afficher les tâches avec les numéros
-    nl -w1 -s". " "$FICHIER_TACHES"
 }
 
 
@@ -90,12 +89,12 @@ afficher_tache() {
 while true
 do
     message_bienvenue
-    echo "========================================"
-    echo "1. Ajouter une tâche"
-    echo "2. Supprimer une tâche"
-    echo "3. Afficher toutes les tâches"
-    echo "4. Quitter"
-    echo "========================================"
+    echo "==========================================="
+    echo "| 1. Ajouter une tâche                    |"
+    echo "| 2. Supprimer une tâche                  |"
+    echo "| 3. Afficher toutes les tâches           |"
+    echo "| 4. Quitter                              |"
+    echo "==========================================="
     read -p "Choisissez une option (1-4)> " choix
     
     case $choix in

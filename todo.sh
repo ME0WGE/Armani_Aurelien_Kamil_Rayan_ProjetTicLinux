@@ -151,7 +151,7 @@ do
             exit 0
             ;;
         *)
-            echo "Option invalide. Veuillez entrer un nombre entre 1 et 4."
+            echo "Option invalide. Veuillez entrer un nombre entre 1 et 5."
             read -p "Appuyez sur ENTER pour continuer..."
             ;;
     esac

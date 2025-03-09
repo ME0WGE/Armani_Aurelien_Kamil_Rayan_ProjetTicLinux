@@ -42,7 +42,7 @@ add_task(){
 
 add_Modif() {
     # Vérifier si le fichier existe et contient des tâches
-    if [[ ! -f $Liste_tache || ! -s $Liste_tache ]]; then
+    if [[ ! -f $liste_tache || ! -s $liste_tache ]]; then
         echo "Aucune tâche enregistrée."
         return
     fi

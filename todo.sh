@@ -137,7 +137,7 @@ do
             ;;
         3)
             clear
-            add_modif
+            add_Modif
             read -p "Appuyez sur ENTER pour continuer..."
             ;;
         4)

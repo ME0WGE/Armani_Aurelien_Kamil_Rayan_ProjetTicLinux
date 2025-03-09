@@ -32,6 +32,44 @@ ajouter_tache() {
     echo "$description" >> "$FICHIER_TACHES"
     echo "Votre tâche a été ajoutée avec succès!"
 }
+# Supprimer une tâche
+supprimer_tache() {
+    echo "|=== Supprimer une tâche ===|"
+    # Vérifier si la tasks.txt est vide
+    if [ ! -s "$FICHIER_TACHES" ]
+    then
+        echo "La liste des tâches est vide. Aucune tâche à supprimer"
+        return
+    fi
+
+    # Afficher les numéros devant les tâches
+    echo '/// Liste des tâches \\\'
+    nl -w1 -s". " "$FICHIER_TACHES"
+
+    echo "Entrez le numéro de la tâche à supprimer > "
+    read numero_tache
+
+    # Vérifier que l'input de l'utilisateur est un nombre
+    if ! [[ "$numero_tache" =~ ^[0-9]+$ ]]
+    then
+        echo "Nop! Veuillez entrer un numéro :angry-stare:"
+        return
+    fi
+
+    # Compter le nombre de tâches dans tasks.txt
+    nombre_taches=$(wc -l < "$FICHIER_TACHES")
+
+    # Vérifier si le numéro de la tâche existe
+    if [ "$numero_tache" -lt 1 ] || [ "$numero_tache" -gt "$nombre_taches" ]
+    then
+        echo "Nop! Le numéro de la tâche n'existe pas."
+        return
+    fi
+
+    # Créer un fichier temporaire sans la tâche à supprimer
+    sed -i "${numero_tache}d" "$FICHIER_TACHES"
+    echo "Tâche $numero_tache a été supprimée avec succès!"
+}
 
 
 

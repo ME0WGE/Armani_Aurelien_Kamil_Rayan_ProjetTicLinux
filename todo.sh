@@ -1,6 +1,12 @@
 #!/bin/bash
 
-liste_tache="liste_tache.txt"
+# VARIABLES
+liste_tache="litste_tache.txt"
+# Création du fichier tasks.txt s'il n'existe pas déjà dans le dossier
+if [ ! -f "$liste_tache" ]
+then
+    touch "$liste_tache"
+fi
 
 
 add_task(){

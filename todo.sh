@@ -62,7 +62,7 @@ add_Modif() {
     fi
 
     # Extraire la tâche actuelle
-    old_task=$(sed -n "${index}p" "$Liste_tache")
+    old_task=$(sed -n "${index}p" "$liste_tache")
 
     # Vérifier si la tâche existe
     if [[ -z "$old_task" ]]; then
@@ -78,7 +78,7 @@ add_Modif() {
     read new_task
 
     # Modifier la tâche dans le fichier
-    sed -i "${index}s/.*/$index. $new_task/" "$Liste_tache"
+    sed -i "${index}s/.*/$index. $new_task/" "$liste_tache"
 
     echo "Tâche $index modifiée avec succès ! La tâche est désormais $new_task !"
 }

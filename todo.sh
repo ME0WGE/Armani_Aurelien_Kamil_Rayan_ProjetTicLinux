@@ -17,6 +17,21 @@ message_bienvenue() {
     echo "║     Bienvenue dans votre ToDo APP       ║"
     echo "╚═════════════════════════════════════════╝"
 }
+# Ajouter une tâche
+ajouter_tache() {
+    echo "|=== Ajouter une nouvelle tâche ===|"
+    echo "Entrez le description de la tâche > "
+    read description
+
+    if [ -z "$description" ]
+    then
+        echo "Nop! La descriptionne peut pas être vide :angry-stare:"
+        return
+    fi
+
+    echo "$description" >> "$FICHIER_TACHES"
+    echo "Votre tâche a été ajoutée avec succès!"
+}
 
 
 

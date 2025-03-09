@@ -5,6 +5,11 @@ liste_tache="liste_tache.txt"
 add_task(){
     echo "Veuillez entrer une tâche:"
      read tache
+     if [ -z "$tache" ]
+    then
+        echo "Vous n'avez rien écrit. La tache ne peut pas être un champ vide."
+        return
+    fi
      echo $tache >> $liste_tache
      echo "la tache: $tache a bien été ajoutée"
 }

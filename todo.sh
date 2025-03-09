@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# VARIABLES
+FICHIER_TACHES="tasks.txt"
+# Création du fichier tasks.txt s'il n'existe pas déjà dans le dossier
+if [ ! -f "$FICHIER_TACHES" ]
+then
+    touch "$FICHIER_TACHES"
+fi
+
 # FONCTIONS
 # Message de Bienvenue
 message_bienvenue() {

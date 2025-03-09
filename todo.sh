@@ -96,7 +96,6 @@ do
     echo "3. Afficher toutes les tâches"
     echo "4. Quitter"
     echo "========================================"
-    
     read -p "Choisissez une option (1-4)> " choix
     
     case $choix in

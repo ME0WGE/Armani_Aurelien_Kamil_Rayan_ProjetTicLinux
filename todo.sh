@@ -25,7 +25,7 @@ ajouter_tache() {
 
     if [ -z "$description" ]
     then
-        echo "Nop! La descriptionne peut pas être vide :angry-stare:"
+        echo "Nop! La description ne peut pas être vide :angry-stare:"
         return
     fi
 

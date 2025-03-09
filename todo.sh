@@ -70,6 +70,19 @@ supprimer_tache() {
     sed -i "${numero_tache}d" "$FICHIER_TACHES"
     echo "Tâche $numero_tache a été supprimée avec succès!"
 }
+# Afficher les tâches
+afficher_tache() {
+    echo "|=== Afficher les tâches ===|"
+
+    # Vérifier si le tasks.txt est vide
+    if [ ! -s "$FICHIER_TACHES" ]
+    then
+        echo "Aucune tâche."
+    fi
+
+    # Afficher les tâches avec les numéros
+    nl -w1 -s". " "$FICHIER_TACHES"
+}
 
 
 

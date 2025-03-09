@@ -82,6 +82,11 @@ afficher_tache() {
         nl -w1 -s". " "$FICHIER_TACHES"
     fi
 }
+# BONUS
+# Modifier une tâche existante
+modifier_tache() {
+    
+}
 
 
 

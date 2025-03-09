@@ -8,6 +8,26 @@ then
     touch "$liste_tache"
 fi
 
+# Message de Bienvenue
+message_bienvenue() {
+    clear
+    echo "╔═════════════════════════════════════════╗"
+    echo "║                 ToDo APP                ║"
+    echo "║     Bienvenue dans votre ToDo APP       ║"
+    echo "╚═════════════════════════════════════════╝"
+}
+# Afficher une tâche
+afficher_tache() {
+    echo "|=== Afficher les Tâches ===|"
+
+    # Vérifier si le tasks.txt est vide
+    if [ ! -s "$liste_tache" ]
+    then
+        echo "Aucune tâche."
+    else
+        nl -w1 -s". " "$liste_tache"
+    fi
+}
 
 add_task(){
   echo "Veuillez entrer une tâche:"

@@ -6,6 +6,7 @@ add_task(){
     echo "Veuillez entrer une tâche:"
      read tache
      echo $tache >> $liste_tache
+     echo "la tache: $tache a bien été ajoutée"
 }
 
 while true

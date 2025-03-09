@@ -49,7 +49,7 @@ add_Modif() {
 
     # Afficher la liste des tâches
     echo "Liste des tâches :"
-    cat "$Liste_tache"
+    nl -w1 -s". " "$liste_tache"
 
     # Demander l'index de la tâche à modifier
     echo "Veuillez entrer l'index de la tâche à modifier :"
@@ -78,7 +78,7 @@ add_Modif() {
     read new_task
 
     # Modifier la tâche dans le fichier
-    sed -i "${index}s/.*/$index. $new_task/" "$liste_tache"
+    sed -i "${index}s/.*/$new_task/" "$liste_tache"
 
     echo "Tâche $index modifiée avec succès ! La tâche est désormais $new_task !"
 }
@@ -139,7 +139,7 @@ do
             clear
             add_Modif
             read -p "Appuyez sur ENTER pour continuer..."
-            ;;
+            ;;  
         4)
             clear
             afficher_tache
